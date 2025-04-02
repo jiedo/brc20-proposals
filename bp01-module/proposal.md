@@ -78,6 +78,8 @@ The module ID after `OP_RETURN` is serialized as the 32-byte `TXID`, followed by
 * The user's own brc-20 balance in the module will be withdrawn to the target address.
 
 * The content of inscription must include the module's ID. Withdrawals are only valid if the module exists and is a white module.
+  
+* From the perspective of the brc20 core, there is no need to deal with special processing when inscribing withdrawal inscriptions, only the balance withdrawal needs to be processed when sending. Like the transfer inscription, when the withdrawal inscription is sent directly to the miner, it will be successfully withdrawn to the sender himself.
 
 ```
 {
