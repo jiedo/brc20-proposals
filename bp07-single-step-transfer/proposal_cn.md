@@ -30,7 +30,7 @@ OP_ENDIF
 我们可以简单复用这个机制，把这个公钥对应的地址作为铸造brc20 transfer时锁定的可用余额来源，就能有效避免无授权的transfer铸造。
 在legacy transfer中，锁定的transferable余额属于铭文的持有地址，这个地址同时也是可用余额的来源地址。但在公钥已经可以指定余额来源地址而不需要通过铭文持有地址的情况下，铭文持有地址就可以作为新的接收地址，这产生了一种在铸造时就单步转移余额的新方式。如下图所示：
 
-[Single Step Transfer Function](./single-step.png)
+![Single Step Transfer Function](./single-step.png)
 
 这种single-step transfer和legacy transfer的唯一差别是在铸造时选择可用余额来源地址方式不同。对于一个已经铸造的transfer铭文，行为不再有差别。
 所有地址默认可以使用legacy transfer或单步transfer，但一个公钥首次铸造有效单步transfer铭文后，这个公钥对应的地址上将永久禁用legacy transfer。
