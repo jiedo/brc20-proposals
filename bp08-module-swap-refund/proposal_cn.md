@@ -36,5 +36,5 @@ Bitcoin 主网上的 BRC-20 Swap 模块因未达成广泛的协议共识，且�
 
 # 参考
 
-BRC-20 协议
-BRC-20 Module 提案
+* BRC-20 协议
+* BRC-20 Module 提案

@@ -36,5 +36,5 @@ to the module deployer address:
 
 ## References
 
-BRC-20 Protocol
-BRC-20 Module Proposal
+* BRC-20 Protocol
+* BRC-20 Module Proposal
