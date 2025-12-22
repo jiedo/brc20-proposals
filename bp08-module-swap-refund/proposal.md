@@ -13,12 +13,16 @@ The BRC-20 Swap module on Bitcoin mainnet has not achieved broad protocol consen
 The total amount of assets to be refunded has already been fully indexed by the existing BRC-20 indexers, i.e., stored in the OP_RETURN addresses associated with the module. Before processing any BRC-20 events at a specified block height, all BRC-20 asset balances currently held in the module address will be transferred in a single operation to the module deployer’s address. This will generate multiple asset transfer records, which are not related to inscriptions but only to the block height or Coinbase transaction.
 
 After the refund, the balance of all tickers in the module address will be zero. Any subsequent transfers of BRC-20 assets to this address will not trigger an automatic refund.
+
 The module deployer will be responsible for manually distributing the specific assets to users thereafter.
 
 ## Indexer Implementation
 
 Existing indexers can support the refund process without executing any Swap module logic.
+
 The content following OP_RETURN in the module address is the byte-reversed deployment transaction ID. Anyone can verify the deployer’s address by inspecting the deployment transaction. This verification process does not require implementation in the indexer code; only hardcoded addresses are needed.
+
+The indexer must handle blockchain reorgs correctly to guarantee that the balance transfer event is processed only once, thereby preventing duplicate transfers.
 
 * Bitcoin Mainnet
 
