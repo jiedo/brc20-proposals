@@ -26,14 +26,14 @@ The indexer must handle blockchain reorgs correctly to guarantee that the balanc
 
 * Bitcoin Mainnet
 
-Before processing any BRC-20 events at block height **932,888**, first transfer all 23 types of BRC-20 assets from address
+Before processing any BRC-20 events at block height **932,888**, first transfer all types of BRC-20 assets (currently 23 types) from address
 `6a208cbc2ac9896cac98d304aa42f43b98208ce8ae31c25e48d84ee852834a1a8066`
 to the module deployer address:
 `bc1qrj03km5h9ag24cpynyn3l5tvny9cyd0x0le42u`.
 
 * Bitcoin Signet
 
-Before processing any BRC-20 events at block height **283,888**, first transfer all 4 types of BRC-20 assets from address
+Before processing any BRC-20 events at block height **283,888**, first transfer all types of BRC-20 assets (currently 4 types) from address
 `6a2031152ea2364a6dbaab9013be8d656a34256d7e89f0c30714bbb04a9d85e63e5b`
 to the module deployer address:
 `tb1qkrewl9zclku2qngth52eezdyrwmjpcspttdypa`.

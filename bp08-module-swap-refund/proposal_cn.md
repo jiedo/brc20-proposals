@@ -28,14 +28,14 @@ Bitcoin 主网上的 BRC-20 Swap 模块因未达成广泛的协议共识，且�
 
 在区块高度 **932888** 开始处理任何 BRC-20 事件前，首先将地址
 `6a208cbc2ac9896cac98d304aa42f43b98208ce8ae31c25e48d84ee852834a1a8066`
-上的全部 23 种 BRC-20 资产转移至模块部署者地址：
+上的全部BRC-20 资产（当前为 23 种）转移至模块部署者地址：
 `bc1qrj03km5h9ag24cpynyn3l5tvny9cyd0x0le42u` 。
 
 * Bitcoin Signet
 
 在区块高度 **283888** 开始处理任何 BRC-20 事件前，首先将地址
 `6a2031152ea2364a6dbaab9013be8d656a34256d7e89f0c30714bbb04a9d85e63e5b`
-上的全部 4 种 BRC-20 资产转移至模块部署者地址：
+上的全部 BRC-20 资产（当前为 4 种）转移至模块部署者地址：
 `tb1qkrewl9zclku2qngth52eezdyrwmjpcspttdypa` 。
 
 # 参考
