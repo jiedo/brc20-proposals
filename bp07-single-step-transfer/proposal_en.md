@@ -111,3 +111,16 @@ The indexing rules are listed below:
 - A single-step transfer with a "to" field minted directly to a module's receiving address will not deposit into the module; the "to" field takes priority.
 - A single-step transfer without a "to" field that is minted to an address different from the signer's address will transfer the balance and then become invalid. (Already implemented in fb.)
 - A single-step transfer without a "to" field that is minted to the same address as the signer's address behaves like a traditional transfer inscription — it supports transferring balance by sending the inscription. (This is the fundamental rule of single-step transfer, reiterated here for emphasis.)
+
+regarding inscriptions within a single transaction — we need to emphasize the following:
+
+- Multiple single-step transfer inscriptions inscribed within a single input can only have the same owner.
+- Multiple single-step transfer inscriptions inscribed across different inputs can each have their own respective owner.
+- Each transfer inscription is executed and validated independently and sequentially, as if they were in separate transactions. A single invalid transfer within a transaction will not invalidate the others. In other words, single-step transfers that have already been determined valid and executed will not be rolled back due to a subsequent transfer failure.
+
+
+Regarding the ordering of inscription events within the same transaction, we need to define explicit rules rather than directly adopting the current ord output-based inscription ordering, since the output order of inscriptions in ord can be affected by multiple factors:
+
+- Transfer events should always take priority over inscribe events. The current ord implementation is inconsistent in this regard — when multiple inscribes and transfers are mixed, and inscribes can specify a `point`, the two types of events may end up interleaved.
+- Inscribe events should follow the construction order (i.e., sequence number) rather than the inscription number order. When a `point` is used to specify a reverse position, the number (and `i0`, `i1`, etc.) may be in reverse relative to the creation order.
+- Transfer events should follow the input order of inscriptions (or equivalently, the output order — these two orderings are consistent).

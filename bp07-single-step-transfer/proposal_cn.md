@@ -110,3 +110,22 @@ We can first enable single-step transfer on 5 characters, then enable it in 4-ch
 - 带“to”字段的单步transfer直接铸造到module接收地址, 不会充值到module, “to”字段优先生效.
 - 不带“to”字段的单步transfer如果被铸造到和signer地址不同的其他地址, 则将转移余额, 并作废.(已在fb实施)
 - 不带“to”字段的单步transfer如果被铸造到和signer地址相同的地址,则像传统transfer铭文一样, 支持通过发送铭文来转移余额.(单步transfer的基本规则, 在这里作为强调)
+
+### 补充
+
+1. 考虑使用pkscript作为to的值, 而不是使用地址.
+2. 考虑使用新op, 比如"send", 这样必须附带"to"字段, 建议先不复制现有传统transfer的特性.
+
+对于单笔交易内的铸造我需要强调,
+
+a. 在单个输入中铸造的多个单步transfer铭文, 它们只能有相同的owner.
+b. 对于不同输入中铸造的多个单步transfer, 它们可以有各自的owner.
+c. 每个transfer铭文都是独立并且依次执行并判断合法性的, 就像它们处于不同的交易中一样. 不会因为一个交易内的一笔transfer无效就导致所有的无效. 也就是说靠前已经判定合法的单步transfer的执行不会因为后续某transfer失败而需要回滚.
+
+对于相同交易内的铭文事件, 需要明确规范, 而不是直接沿用当前的ord内放置到输出中的铭文顺序. 因为ord内铭文的输出顺序会受到多个因素的影响.
+
+a. 铭文的转移事件应当总是优先于铭文的铸造事件. 这在ord中的实现是混乱的, 多重铸造和多重转移混合时, 由于铸造可以指定point, 可能出现两种事件穿插.
+b. 铭文的铸造事件应当按构造的顺序(sequence number)而不是铭文number的顺序, 在用point指定逆序位置时可能导致number(和i0, i1...等)相对于创建顺序逆序.
+c. 铭文的转移事件应当按铭文的输入顺序(或者按输出顺序, 这两个顺序是一致的)
+
+
