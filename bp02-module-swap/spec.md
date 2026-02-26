@@ -427,7 +427,9 @@ Note: Assuming the user exchanges 1000 ordi for sats, when swapping, 1000 ordi i
 
 The sequencer is responsible for collecting each aggregation operation. After summarizing, it will forge the aggregated inscription on the chain. During this process, a certain amount of network fee will be generated to be used by miners for packaging. We can calculate the network fee charged to users based on the current network fee rate and the user's aggregation operations using the formula:
 
-$$fee = gas \cdot gasPrice$$
+$$
+fee = gas \cdot gasPrice
+$$
 
 - gas: the number of bytes occupied by each aggregation operation on the chain. Taking the deployPool aggregation operation as an example, the number of bytes calculated after JSON serialization is 82.
 
